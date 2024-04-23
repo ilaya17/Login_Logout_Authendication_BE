@@ -1,0 +1,6 @@
+const session = require('express-session'); const MongoStore = require('connect-mongo');  app.use(session({   store: MongoStore.create({     mongoUrl: 'your-mongodb-uri',     ttl: 14 * 24 * 60 * 60, // session expiration time in seconds (2 weeks)   }),   secret: 'your-secret-key',   resave: false,   saveUninitialized: false,   cookie: { secure: false }, }));
+
+
+passport.serializeUser((user, done) => {   done(null, user.id); });  passport.deserializeUser((id, done) => {   // Lookup user by ID in your database and call done(err, user) });
+
+npm install express-session@latest
